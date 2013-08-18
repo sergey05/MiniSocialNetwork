@@ -1,0 +1,16 @@
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\obj\Debug\DependencyInjection.csprojResolveAssemblyReference.cache
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\DependencyInjection.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\DependencyInjection.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\DataAccess.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\EFContextLayer.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\EntityFramework.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\Ninject.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\Services.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\DataAccess.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\EFContextLayer.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\Services.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\EntityFramework.xml
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\Ninject.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\bin\Debug\Ninject.xml
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\obj\Debug\DependencyInjection.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DependencyInjection\obj\Debug\DependencyInjection.pdb

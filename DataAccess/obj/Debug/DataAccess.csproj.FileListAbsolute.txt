@@ -1,0 +1,7 @@
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\bin\Debug\DataAccess.dll.config
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\bin\Debug\DataAccess.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\bin\Debug\DataAccess.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\bin\Debug\EntityFramework.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\bin\Debug\EntityFramework.xml
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\obj\Debug\DataAccess.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DataAccess\obj\Debug\DataAccess.pdb

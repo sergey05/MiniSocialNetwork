@@ -1,0 +1,9 @@
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\Services.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\Services.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\obj\Debug\Services.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\obj\Debug\Services.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\DataAccess.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\DataAccess.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.xml

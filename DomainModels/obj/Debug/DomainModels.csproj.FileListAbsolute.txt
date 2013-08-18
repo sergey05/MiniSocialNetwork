@@ -1,0 +1,4 @@
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\bin\Debug\DomainModels.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\bin\Debug\DomainModels.pdb
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.dll
+F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.pdb
