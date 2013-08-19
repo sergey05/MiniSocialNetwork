@@ -6,3 +6,13 @@ F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\EFContext
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EntityFramework.xml
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\EFContextLayer\obj\Debug\EFContextLayer.dll
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\EFContextLayer\obj\Debug\EFContextLayer.pdb
+d:\Projects\MiniSocialNetwork\EFContextLayer\obj\Debug\EFContextLayer.csprojResolveAssemblyReference.cache
+d:\Projects\MiniSocialNetwork\EFContextLayer\obj\Debug\EFContextLayer.dll
+d:\Projects\MiniSocialNetwork\EFContextLayer\obj\Debug\EFContextLayer.pdb
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EFContextLayer.dll.config
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EFContextLayer.dll
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EFContextLayer.pdb
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\DomainModels.dll
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EntityFramework.dll
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\DomainModels.pdb
+d:\Projects\MiniSocialNetwork\EFContextLayer\bin\Debug\EntityFramework.xml

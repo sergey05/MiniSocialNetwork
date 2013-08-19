@@ -7,3 +7,14 @@ F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.dll
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\DataAccess.pdb
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.xml
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\Services.dll
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\Services.pdb
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\DataAccess.dll
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.dll
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\DataAccess.pdb
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\EntityFramework.xml
+d:\Projects\MiniSocialNetwork\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+d:\Projects\MiniSocialNetwork\Services\obj\Debug\Services.dll
+d:\Projects\MiniSocialNetwork\Services\obj\Debug\Services.pdb
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\DomainModels.dll
+d:\Projects\MiniSocialNetwork\Services\bin\Debug\DomainModels.pdb

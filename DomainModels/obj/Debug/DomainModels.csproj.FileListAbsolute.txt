@@ -2,3 +2,8 @@ F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainMod
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\bin\Debug\DomainModels.pdb
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.dll
 F:\Sergo\!!Программирование\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.pdb
+d:\Projects\MiniSocialNetwork\DomainModels\bin\Debug\DomainModels.dll
+d:\Projects\MiniSocialNetwork\DomainModels\bin\Debug\DomainModels.pdb
+d:\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.csprojResolveAssemblyReference.cache
+d:\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.dll
+d:\Projects\MiniSocialNetwork\DomainModels\obj\Debug\DomainModels.pdb

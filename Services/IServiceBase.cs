@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataAccess;
+using DomainModels;
 
 namespace Services
 {

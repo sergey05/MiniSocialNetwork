@@ -48,6 +48,10 @@
       <Project>{20094b00-53d9-4852-9165-792320482b75}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{25D7AEF3-89A4-4997-955C-71F554CFA931}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,7 +14,7 @@ namespace MiniSocialNetwork.Web
     {
         protected void Application_Start()
         {
-            DependencyResolver.SetResolver(DependencyInjector.GetResolver());
+            NinjectDependencyInjector.SetMvcResolver();
             MiniSocialNetworkContext.SetInitializer();
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
