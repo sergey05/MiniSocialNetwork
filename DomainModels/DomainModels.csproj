@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackListUser.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="MilitarStatus.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RePost.cs" />
     <Compile Include="Roles.cs" />
     <Compile Include="SearchOptions.cs" />
+    <Compile Include="Subscriber.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

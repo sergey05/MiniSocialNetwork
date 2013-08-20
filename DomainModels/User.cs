@@ -7,25 +7,26 @@ namespace DomainModels
 {
     public class User
     {
-        private ICollection<User> _subscribers;
+        private ICollection<Subscriber> _subscribers;
         private ICollection<Message> _messages;
         private ICollection<Post> _myPosts;
-        private ICollection<User> _blackList;
-        private ICollection<Post> _wall;
+        private ICollection<RePost> _myRePosts;
+        private ICollection<BlackListUser> _blackList;
 
         public User()
         {
-            _subscribers = new List<User>();
+            _subscribers = new List<Subscriber>();
             _messages = new List<Message>();
             _myPosts = new List<Post>();
-            _blackList = new List<User>();
-            _wall = new List<Post>();
+            _blackList = new List<BlackListUser>();
+            _myRePosts = new List<RePost>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -33,8 +34,11 @@ namespace DomainModels
 
         [Required]
         public string Name { get; set; }
+        public bool HasExpiredPassword { get; set; }
+        public bool IsBlocked { get; set; }
+        public bool HasAccess { get; set; }
         public byte[] Foto { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string City { get; set; }
         public string PhoneNumber { get; set; }
         public string Skype { get; set; }
@@ -46,7 +50,7 @@ namespace DomainModels
         public MilitarStatus MilitarStatus { get; set; }
         public Role Role { get; set; }
 
-        public virtual ICollection<User> Subscribers
+        public virtual ICollection<Subscriber> Subscribers
         {
             get { return _subscribers; }
             set { _subscribers = value; }
@@ -64,16 +68,17 @@ namespace DomainModels
             set { _myPosts = value; }
         }
 
-        public virtual ICollection<User> BlackList
+        public virtual ICollection<BlackListUser> BlackList
         {
             get { return _blackList; }
             set { _blackList = value; }
         }
 
-        public virtual ICollection<Post> Wall
+
+        public ICollection<RePost> MyRePosts
         {
-            get { return _wall; }
-            set { _wall = value; }
+            get { return _myRePosts; }
+            set { _myRePosts = value; }
         }
     }
 }

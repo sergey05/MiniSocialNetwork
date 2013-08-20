@@ -19,7 +19,8 @@ namespace MiniSocialNetwork.Web.Controllers
 
         public ActionResult Index()
         {
-            userService.Get();
+            userService.Insert(new User(){Name="Name",Password = "Password",Email = "ololo@tut.by",Foto = new byte[]{1,2,3,4,7,6}});
+            userService.CommitChanges();
             return null;
         }
 
