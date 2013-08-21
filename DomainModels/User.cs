@@ -20,6 +20,9 @@ namespace DomainModels
             _myPosts = new List<Post>();
             _blackList = new List<BlackListUser>();
             _myRePosts = new List<RePost>();
+            HasExpiredPassword = false;
+            IsBlocked = false;
+            HasAccess = true;
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

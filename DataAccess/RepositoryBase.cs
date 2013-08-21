@@ -11,7 +11,6 @@ namespace DataAccess
     {
         private readonly DbContext _context;
         private readonly IDbSet<TEntity> _dbSet;
-        private bool _disposed;
 
         public RepositoryBase(IUnitOfWork unitOfWork)
         {
@@ -40,7 +39,12 @@ namespace DataAccess
 
         public virtual void Insert(TEntity entity)
         {
-            _dbSet.Add(entity);
+           _dbSet.Add(entity);
+        }
+
+        public virtual void Attach(TEntity entity)
+        {
+           _dbSet.Attach(entity);
         }
 
         public virtual void Update(TEntity entity)
@@ -51,30 +55,8 @@ namespace DataAccess
 
         public virtual void Delete(TEntity entity)
         {
-            _dbSet.Remove(entity);
-        }
-
-        public virtual void CommitChanges()
-        {
-            _context.SaveChanges();
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Deleted;
         }
 
         public virtual void ExecuteProcedure(string procedureCommand, params object[] sqlParams)

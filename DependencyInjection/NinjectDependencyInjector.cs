@@ -14,6 +14,8 @@ namespace DependencyInjection
         {
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));//.WithConstructorArgument("unitOfWork",context => context.Kernel.Get<IUnitOfWork>());
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
+            kernel.Bind(typeof(IUserService)).To(typeof(UserService));
+            kernel.Bind(typeof(IAdministrationService)).To(typeof(AdministrationService));
             kernel.Bind<IDbContextFactory<DbContext>>().To<DbContextFactory>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             return kernel;
@@ -24,9 +26,9 @@ namespace DependencyInjection
             return kernelWithRegisteredServices == null ? new NinjectDependencyResolver(RegisterServices(new StandardKernel())) : new NinjectDependencyResolver(kernelWithRegisteredServices);
         }
 
-        public static void SetMvcResolver()
+        public static void SetMvcResolver(IDependencyResolver resolver=null)
         {
-            DependencyResolver.SetResolver(GetNinjectResolver());
+            DependencyResolver.SetResolver(resolver ?? GetNinjectResolver());
         }
     }
 }

@@ -5,13 +5,15 @@ using DomainModels;
 
 namespace Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class,new()
+    public abstract class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class,new()
     {
         private readonly IRepositoryBase<TEntity> _repository;
+        protected readonly IUnitOfWork UnitOfWork;
 
-        public ServiceBase(IRepositoryBase<TEntity> repository)
+        protected ServiceBase(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            UnitOfWork = unitOfWork;
+            _repository = unitOfWork.GetRepository<TEntity>();
         }
 
         public virtual TEntity Single(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
@@ -33,7 +35,10 @@ namespace Services
         {
             _repository.Insert(entity);
         }
-
+        public virtual void Attach(TEntity entity)
+        {
+            _repository.Attach(entity);
+        }
         public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
@@ -42,11 +47,6 @@ namespace Services
         public virtual void Delete(TEntity entity)
         {
             _repository.Delete(entity);
-        }
-
-        public virtual void CommitChanges()
-        {
-            _repository.CommitChanges();
         }
     }
 }

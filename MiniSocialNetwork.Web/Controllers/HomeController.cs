@@ -10,17 +10,18 @@ namespace MiniSocialNetwork.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IServiceBase<User> userService;
+        private readonly IUserService _userService;
+        private readonly IAdministrationService _adminService;
 
-        public HomeController(IServiceBase<User> serv)
+        public HomeController(IUserService userService,IAdministrationService adminService)
         {
-            userService = serv;
+            _userService = userService;
+            _adminService = adminService;
         }
 
         public ActionResult Index()
         {
-            userService.Insert(new User(){Name="Name",Password = "Password",Email = "ololo@tut.by",Foto = new byte[]{1,2,3,4,7,6}});
-            userService.CommitChanges();
+            //_userService.AddNewUser(new User { Name = "Name2", Password = "Password2", Email = "ololo2@tut.by" });
             return null;
         }
 
