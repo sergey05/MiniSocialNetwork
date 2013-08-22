@@ -31,22 +31,5 @@ namespace Services
             return _repository.Get(searchOptions);
         }
 
-        public virtual void Insert(TEntity entity)
-        {
-            _repository.Insert(entity);
-        }
-        public virtual void Attach(TEntity entity)
-        {
-            _repository.Attach(entity);
-        }
-        public virtual void Update(TEntity entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public virtual void Delete(TEntity entity)
-        {
-            _repository.Delete(entity);
-        }
     }
 }

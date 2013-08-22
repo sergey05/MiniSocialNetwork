@@ -8,7 +8,8 @@ namespace DomainModels
     public class User
     {
         private ICollection<Subscriber> _subscribers;
-        private ICollection<Message> _messages;
+        private ICollection<Message> _outboxMessages;
+        private ICollection<MessageRecipient> _inboxMessages;
         private ICollection<Post> _myPosts;
         private ICollection<RePost> _myRePosts;
         private ICollection<BlackListUser> _blackList;
@@ -16,10 +17,11 @@ namespace DomainModels
         public User()
         {
             _subscribers = new List<Subscriber>();
-            _messages = new List<Message>();
+            _outboxMessages = new List<Message>();
             _myPosts = new List<Post>();
             _blackList = new List<BlackListUser>();
             _myRePosts = new List<RePost>();
+            _inboxMessages = new List<MessageRecipient>();
             HasExpiredPassword = false;
             IsBlocked = false;
             HasAccess = true;
@@ -59,10 +61,10 @@ namespace DomainModels
             set { _subscribers = value; }
         }
 
-        public virtual ICollection<Message> Messages
+        public virtual ICollection<Message> OutboxMessages
         {
-            get { return _messages; }
-            set { _messages = value; }
+            get { return _outboxMessages; }
+            set { _outboxMessages = value; }
         }
 
         public virtual ICollection<Post> MyPosts
@@ -78,10 +80,16 @@ namespace DomainModels
         }
 
 
-        public ICollection<RePost> MyRePosts
+        public virtual ICollection<RePost> MyRePosts
         {
             get { return _myRePosts; }
             set { _myRePosts = value; }
+        }
+
+        public virtual ICollection<MessageRecipient> InboxMessages
+        {
+            get { return _inboxMessages; }
+            set { _inboxMessages = value; }
         }
     }
 }

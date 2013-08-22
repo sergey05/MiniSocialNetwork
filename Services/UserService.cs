@@ -8,11 +8,13 @@ using DomainModels;
 
 namespace Services
 {
-    public class UserService : ServiceBase<User>, IUserService
+    public class UserService : IUserService
     {
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IUnitOfWork unitOfWork): base(unitOfWork)
+        public UserService(IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
         }
 
         public bool AddNewUser(User user)
@@ -22,24 +24,27 @@ namespace Services
                 return false;
             }
             user.Password = Encryptor.GetMd5Hash(user.Password);
-            Insert(user);
-            UnitOfWork.CommitChanges();
+            var userRepository = _unitOfWork.GetRepository<User>();
+            userRepository.Insert(user);
+            _unitOfWork.CommitChanges();
             return true;
         }
 
         public bool IsUsedEmail(string email)
         {
-            return Single(o => o.Email == email) != null;
+            var userRepository = _unitOfWork.GetRepository<User>();
+            return userRepository.Single(o => o.Email == email) != null;
         }
 
         public bool VerifyUserPassword(string email, string password)
         {
-            return Single(user => user.Email == email && Encryptor.VerifyMd5Hash(password, user.Password)) != null;
+            var userRepository = _unitOfWork.GetRepository<User>();
+            return userRepository.Single(user => user.Email == email && Encryptor.VerifyMd5Hash(password, user.Password)) != null;
         }
 
         public void AddNewMessage(Message message)
         {
-            message.Sender.Messages.Add(message);
+            message.Sender.OutboxMessages.Add(message);
         }
 
     }

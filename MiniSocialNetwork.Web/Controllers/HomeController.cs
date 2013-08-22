@@ -21,7 +21,7 @@ namespace MiniSocialNetwork.Web.Controllers
 
         public ActionResult Index()
         {
-            //_userService.AddNewUser(new User { Name = "Name2", Password = "Password2", Email = "ololo2@tut.by" });
+            _adminService.MakeAdmin(new Guid("5a866af4-c564-4eda-95c8-fdb8bc64deb3"));
             return null;
         }
 

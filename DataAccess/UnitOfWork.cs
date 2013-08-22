@@ -5,20 +5,6 @@ using System.Data.Entity.Infrastructure;
 
 namespace DataAccess
 {
-    //public class UnitOfWork : IUnitOfWork
-    //{
-    //    private readonly DbContext _context;
-
-    //    public UnitOfWork(IDbContextFactory<DbContext> factory)
-    //    {
-    //        _context=factory.Create();
-    //    }
-
-    //    public DbContext GetContext()
-    //    {
-    //        return _context;
-    //    }
-    //}
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext _context;
@@ -66,12 +52,9 @@ namespace DataAccess
             if (!_repositories.ContainsKey(type))
             {
                 var repositoryType = typeof(RepositoryBase<>);
-
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)),new object[]{_context});
-
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)),new object[]{this});
                 _repositories.Add(type, repositoryInstance);
             }
-
             return (IRepositoryBase<T>)_repositories[type];
         }
     }

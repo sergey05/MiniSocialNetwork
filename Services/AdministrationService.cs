@@ -8,26 +8,31 @@ using DomainModels;
 
 namespace Services
 {
-    public class AdministrationService:ServiceBase<User>,IAdministrationService
+    public class AdministrationService : ServiceBase<User>,IAdministrationService
     {
-        public AdministrationService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public AdministrationService(IUnitOfWork unitOfWork): base(unitOfWork)
         {
+            _unitOfWork = unitOfWork;
         }
 
         public void MakeAdmin(Guid userId)
         {
-            var user = Single(o => o.UserId == userId);
+            var userRepository = _unitOfWork.GetRepository<User>();
+            var user = userRepository.Single(o => o.UserId == userId);
             user.Role = Role.Admin;
-            Update(user);
-            UnitOfWork.CommitChanges();
+            userRepository.Update(user);
+            _unitOfWork.CommitChanges();
         }
 
         public void ChangeUserStatus(Guid userId, bool makeBlocked)
         {
-            var user = Single(o => o.UserId == userId);
+            var userRepository = _unitOfWork.GetRepository<User>();
+            var user = userRepository.Single(o => o.UserId == userId);
             user.IsBlocked = makeBlocked;
-            Update(user);
-            UnitOfWork.CommitChanges();
+            userRepository.Update(user);
+            _unitOfWork.CommitChanges();
         }
     }
 }

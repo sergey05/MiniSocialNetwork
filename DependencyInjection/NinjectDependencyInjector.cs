@@ -15,6 +15,7 @@ namespace DependencyInjection
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));//.WithConstructorArgument("unitOfWork",context => context.Kernel.Get<IUnitOfWork>());
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind(typeof(IUserService)).To(typeof(UserService));
+            kernel.Bind(typeof(IMessageService)).To(typeof(MessageService));
             kernel.Bind(typeof(IAdministrationService)).To(typeof(AdministrationService));
             kernel.Bind<IDbContextFactory<DbContext>>().To<DbContextFactory>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
