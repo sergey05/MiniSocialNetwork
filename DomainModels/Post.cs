@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainModels
 {
     public class Post
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PostId { get; set; }
         public DateTime PostedTime { get; set; }
         public byte[] Image { get; set; }

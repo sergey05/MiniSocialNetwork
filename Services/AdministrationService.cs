@@ -10,29 +10,28 @@ namespace Services
 {
     public class AdministrationService : ServiceBase<User>,IAdministrationService
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public AdministrationService(IUnitOfWork unitOfWork): base(unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
-
         public void MakeAdmin(Guid userId)
         {
-            var userRepository = _unitOfWork.GetRepository<User>();
-            var user = userRepository.Single(o => o.UserId == userId);
-            user.Role = Role.Admin;
-            userRepository.Update(user);
-            _unitOfWork.CommitChanges();
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                var user = userRepository.Single(o => o.UserId == userId);
+                user.Role = Role.Admin;
+                userRepository.Update(user);
+                unitOfWork.CommitChanges();
+            }
         }
 
         public void ChangeUserStatus(Guid userId, bool makeBlocked)
         {
-            var userRepository = _unitOfWork.GetRepository<User>();
-            var user = userRepository.Single(o => o.UserId == userId);
-            user.IsBlocked = makeBlocked;
-            userRepository.Update(user);
-            _unitOfWork.CommitChanges();
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                var user = userRepository.Single(o => o.UserId == userId);
+                user.IsBlocked = makeBlocked;
+                userRepository.Update(user);
+                unitOfWork.CommitChanges();
+            }
         }
     }
 }

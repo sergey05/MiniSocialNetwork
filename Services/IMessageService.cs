@@ -7,8 +7,8 @@ using DomainModels;
 
 namespace Services
 {
-    public interface IMessageService
+    public interface IMessageService : IServiceBase<Message>
     {
-        void AddNewMessage(Message message);
+        void AddNewMessage(Message message, User sender, ICollection<User> recipients);
     }
 }

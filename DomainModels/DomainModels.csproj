@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="BlackListUser.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="MessageRecipient.cs" />
     <Compile Include="MilitarStatus.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Post.cs" />

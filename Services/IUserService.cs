@@ -7,7 +7,7 @@ using DomainModels;
 
 namespace Services
 {
-    public interface IUserService
+    public interface IUserService:IServiceBase<User>
     {
         bool AddNewUser(User user);
     }

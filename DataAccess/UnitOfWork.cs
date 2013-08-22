@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using EFContextLayer;
 
 namespace DataAccess
 {
@@ -12,9 +13,9 @@ namespace DataAccess
         private bool _disposed;
         private Hashtable _repositories;
 
-        public UnitOfWork(IDbContextFactory<DbContext> factory)
+        public UnitOfWork()
         {
-            _context = factory.Create();
+            _context = new MiniSocialNetworkContext();
         }
 
         public DbContext GetContext()

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using DomainModels;
 using EFContextLayer.Migrations;
+
 
 namespace EFContextLayer
 {
@@ -17,21 +18,17 @@ namespace EFContextLayer
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<MessageRecipient>()
-                        .HasKey(a => new { a.MessageId, a.RecipientId });
-
-            modelBuilder.Entity<MessageRecipient>()
-                        .HasRequired(mp => mp.Message)
-                        .WithMany()
-                        .HasForeignKey(p => p.MessageId).WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MessageRecipient>()
-                        .HasRequired(p => p.Recipient)
-                        .WithMany(b => b.InboxMessages);
-
-            modelBuilder.Entity<Message>()
-                        .HasRequired(p => p.Sender)
-                        .WithMany(b => b.OutboxMessages);
+            modelBuilder.Entity<Message>().Property(o => o.MessageId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<Message>().HasKey(o=>o.MessageId);
+            modelBuilder.Entity<User>()
+                .HasMany<Message>(r => r.InboxMessages)
+                .WithMany(u => u.Recipients)
+                .Map(m =>
+                {
+                    m.ToTable("UserMessages");
+                    m.MapLeftKey("UserId");
+                    m.MapRightKey("MessageId");
+                    });
 
             modelBuilder.Entity<Comment>()
                         .HasRequired(p => p.Post)

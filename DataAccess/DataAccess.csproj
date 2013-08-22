@@ -62,6 +62,10 @@
       <Project>{25D7AEF3-89A4-4997-955C-71F554CFA931}</Project>
       <Name>DomainModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EFContextLayer\EFContextLayer.csproj">
+      <Project>{1E6C53B9-F8A2-482D-B0B7-13A87A5EBE22}</Project>
+      <Name>EFContextLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
