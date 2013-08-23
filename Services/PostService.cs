@@ -12,7 +12,7 @@ namespace Services
     {
         public void AddNewPost(Post post,User user)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                var userRepository = unitOfWork.GetRepository<User>();
                var postRepository = unitOfWork.GetRepository<Post>();
@@ -26,7 +26,7 @@ namespace Services
 
         public void AddPostComment(Comment comment, Post post, User commentator)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 var userRepository = unitOfWork.GetRepository<User>();
                 var postRepository = unitOfWork.GetRepository<Post>();
@@ -42,7 +42,7 @@ namespace Services
 
         public void Repost(Post post, User reposter)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 var userRepository = unitOfWork.GetRepository<User>();
                 var postRepository = unitOfWork.GetRepository<Post>();

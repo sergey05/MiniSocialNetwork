@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using EFContextLayer;
 
 namespace DataAccess
@@ -15,7 +14,12 @@ namespace DataAccess
 
         public UnitOfWork()
         {
-            _context = new MiniSocialNetworkContext();
+            _context = new DbContextFactory().Create();
+        }
+
+        public static IUnitOfWork GetUnitOfWork()
+        {
+            return new UnitOfWork();
         }
 
         public DbContext GetContext()

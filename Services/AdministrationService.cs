@@ -12,7 +12,7 @@ namespace Services
     {
         public void MakeAdmin(Guid userId)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 var userRepository = unitOfWork.GetRepository<User>();
                 var user = userRepository.Single(o => o.UserId == userId);
@@ -24,7 +24,7 @@ namespace Services
 
         public void ChangeUserStatus(Guid userId, bool makeBlocked)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 var userRepository = unitOfWork.GetRepository<User>();
                 var user = userRepository.Single(o => o.UserId == userId);

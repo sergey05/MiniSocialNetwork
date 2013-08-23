@@ -12,7 +12,7 @@ namespace Services
     {
         public void AddNewMessage(Message message, User sender, ICollection<User> recipients)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 var messageRepository = unitOfWork.GetRepository<Message>();
                 var userRepository = unitOfWork.GetRepository<User>();

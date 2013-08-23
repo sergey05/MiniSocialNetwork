@@ -9,7 +9,7 @@ namespace Services
     {
         public virtual TEntity Single(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 return unitOfWork.GetRepository<TEntity>().Single(predicate);
             }
@@ -17,7 +17,7 @@ namespace Services
 
         public virtual IPagedList<TEntity> GetPaged(int pageIndex, int pageSize,SearchOptions<TEntity> searchOptions=null)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 return unitOfWork.GetRepository<TEntity>().GetPaged(searchOptions, pageIndex, pageSize);
             }
@@ -25,7 +25,7 @@ namespace Services
 
         public virtual IEnumerable<TEntity> Get(SearchOptions<TEntity> searchOptions=null)
         {
-            using (var unitOfWork = new UnitOfWork())
+            using (var unitOfWork = UnitOfWork.GetUnitOfWork())
             {
                 return unitOfWork.GetRepository<TEntity>().Get(searchOptions);
             }

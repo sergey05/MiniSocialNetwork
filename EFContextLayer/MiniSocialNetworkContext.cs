@@ -68,8 +68,8 @@ namespace EFContextLayer
 
         public static void SetInitializer()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<MiniSocialNetworkContext, Configuration>());
-            Database.SetInitializer(new DropCreateDatabaseAlways<MiniSocialNetworkContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MiniSocialNetworkContext, Configuration>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<MiniSocialNetworkContext>());
         }
     }
 }
