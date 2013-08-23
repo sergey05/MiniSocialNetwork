@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DomainModels;
+﻿using DomainModels;
 
 namespace Services
 {
     public interface IUserService:IServiceBase<User>
     {
         bool AddNewUser(User user);
+        void UpdateUser(User user);
+        bool IsUsedEmail(string email);
+        bool VerifyUserPassword(string email, string password);
     }
 }

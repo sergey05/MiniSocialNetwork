@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainModels;
 
 namespace Services
 {
-    public interface IPostService
+    public interface IPostService:IServiceBase<Post>
     {
     }
 }

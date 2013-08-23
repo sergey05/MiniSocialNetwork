@@ -26,6 +26,16 @@ namespace Services
             }
         }
 
+        public void UpdateUser(User user)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                userRepository.Update(user);
+                unitOfWork.CommitChanges();
+            }
+        }
+
         public bool IsUsedEmail(string email)
         {
             using (var unitOfWork = new UnitOfWork())
@@ -43,5 +53,56 @@ namespace Services
                 return userRepository.Single(user => user.Email == email && Encryptor.VerifyMd5Hash(password, user.Password)) != null;
             }
         }
+
+        public void AddUserToBlackList(User user, User blackListedUser)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                userRepository.Attach(user);
+                userRepository.Attach(blackListedUser);
+                user.MyBlackList.Add(blackListedUser);
+                unitOfWork.CommitChanges();
+            }
+        }
+
+        public void Subcribe(User user, User subscriber)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                var subscriptionRepository = unitOfWork.GetRepository<Subscription>();
+                userRepository.Attach(user);
+                userRepository.Attach(subscriber);
+                var subscription = new Subscription() {Subscriber = subscriber, User = user};
+                subscriptionRepository.Insert(subscription);
+                unitOfWork.CommitChanges();
+            }
+        }
+
+        public void ApproveNewSubscription(Guid userId, Guid subscriberId)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var subscriptionRepository = unitOfWork.GetRepository<Subscription>();
+                var approvedSubcription = subscriptionRepository.Single(sub => sub.UserId == userId && sub.SubscriberId == subscriberId);
+                approvedSubcription.IsApproved = true;
+                subscriptionRepository.Update(approvedSubcription);
+                unitOfWork.CommitChanges();
+            }
+        }
+
+        public void RemoveSubscription(Guid userId, Guid subscriberId)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var subscriptionRepository = unitOfWork.GetRepository<Subscription>();
+                var approvedSubcription = subscriptionRepository.Single(sub => sub.UserId == userId && sub.SubscriberId == subscriberId);
+                approvedSubcription.IsRemoved = true;
+                subscriptionRepository.Update(approvedSubcription);
+                unitOfWork.CommitChanges();
+            }
+        }
+
     }
 }

@@ -17,18 +17,39 @@ namespace EFContextLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<Message>().Property(o => o.MessageId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Message>().HasKey(o=>o.MessageId);
+
             modelBuilder.Entity<User>()
-                .HasMany<Message>(r => r.InboxMessages)
-                .WithMany(u => u.Recipients)
-                .Map(m =>
-                {
-                    m.ToTable("UserMessages");
-                    m.MapLeftKey("UserId");
-                    m.MapRightKey("MessageId");
-                    });
+                        .HasMany<Message>(r => r.InboxMessages)
+                        .WithMany(u => u.Recipients)
+                        .Map(m =>
+                        {
+                            m.ToTable("UserMessages");
+                            m.MapLeftKey("UserId");
+                            m.MapRightKey("MessageId");
+                        });
+
+            modelBuilder.Entity<User>()
+                        .HasMany<User>(r => r.MyBlackList)
+                        .WithMany(u => u.DeniedAccessUsers)
+                        .Map(m =>
+                        {
+                            m.ToTable("UserBlackList");
+                            m.MapLeftKey("UserId");
+                            m.MapRightKey("BlackListedUserId");
+                        });
+
+
+            modelBuilder.Entity<User>()
+                        .HasMany<Subscription>(r => r.Subscribers)
+                        .WithRequired(o => o.User).HasForeignKey(o=>o.UserId).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                        .HasMany<Subscription>(r => r.MySubscriptions)
+                        .WithRequired(o => o.Subscriber).HasForeignKey(o => o.SubscriberId);
+
+            modelBuilder.Entity<Subscription>().HasKey(o => new { o.SubscriberId, o.UserId });
 
             modelBuilder.Entity<Comment>()
                         .HasRequired(p => p.Post)
@@ -42,15 +63,13 @@ namespace EFContextLayer
                         .HasOptional(p => p.Owner)
                         .WithMany(o => o.MyRePosts);
 
-            modelBuilder.Entity<BlackListUser>().ToTable("BlackListUser");
-            modelBuilder.Entity<Subscriber>().ToTable("Subscriber");
             modelBuilder.Entity<RePost>().ToTable("RePost");
         }
 
         public static void SetInitializer()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MiniSocialNetworkContext, Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<MiniSocialNetworkContext>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<MiniSocialNetworkContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<MiniSocialNetworkContext>());
         }
     }
 }

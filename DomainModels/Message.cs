@@ -13,7 +13,9 @@ namespace DomainModels
         {
             _recipients = new List<User>();
         }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid MessageId { get; set;}
+        [Required]
         public string Content { get; set; }
         public string Subject { get; set; }
         public virtual User User { get; set; }

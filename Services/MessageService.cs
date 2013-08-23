@@ -18,6 +18,7 @@ namespace Services
                 var userRepository = unitOfWork.GetRepository<User>();
                 userRepository.Attach(sender);
                 message.User = sender;
+                message.SendingTime = DateTime.Now;
                 foreach (var recipient in recipients)
                 {
                     userRepository.Attach(recipient);

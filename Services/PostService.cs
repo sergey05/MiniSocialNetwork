@@ -20,6 +20,7 @@ namespace Services
                 post.Author = user;
                 post.PostedTime = DateTime.Now;
                 postRepository.Insert(post);
+                unitOfWork.CommitChanges();
             }
         }
 
@@ -32,8 +33,25 @@ namespace Services
                 var commentRepository = unitOfWork.GetRepository<Comment>();
                 userRepository.Attach(commentator);
                 postRepository.Attach(post);
+                comment.AdditionTime = DateTime.Now;
                 comment.Commentator = commentator;
                 commentRepository.Insert(comment);
+                unitOfWork.CommitChanges();
+            }
+        }
+
+        public void Repost(Post post, User reposter)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var userRepository = unitOfWork.GetRepository<User>();
+                var postRepository = unitOfWork.GetRepository<Post>();
+                var repostRepository = unitOfWork.GetRepository<RePost>();
+                userRepository.Attach(reposter);
+                postRepository.Attach(post);
+                var repost = new RePost {RepostTime = DateTime.Now, Owner = reposter};
+                repostRepository.Insert(repost);
+                unitOfWork.CommitChanges();
             }
         }
     }

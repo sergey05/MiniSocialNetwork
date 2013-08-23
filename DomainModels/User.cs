@@ -7,19 +7,23 @@ namespace DomainModels
 {
     public class User
     {
-        private ICollection<Subscriber> _subscribers;
+        private ICollection<Subscription> _subscribers;
         private ICollection<Message> _outboxMessages;
         private ICollection<Message> _inboxMessages;
         private ICollection<Post> _myPosts;
         private ICollection<RePost> _myRePosts;
-        private ICollection<BlackListUser> _blackList;
+        private ICollection<User> _myBlackList;
+        private ICollection<Subscription> _mySubscriptions;
+        private ICollection<User> _deniedAccessUsers;
 
         public User()
         {
-            _subscribers = new List<Subscriber>();
+            _subscribers = new List<Subscription>();
+            _mySubscriptions = new List<Subscription>();
             _outboxMessages = new List<Message>();
             _myPosts = new List<Post>();
-            _blackList = new List<BlackListUser>();
+            _myBlackList = new List<User>();
+            _deniedAccessUsers = new List<User>();
             _myRePosts = new List<RePost>();
             _inboxMessages = new List<Message>();
             HasExpiredPassword = false;
@@ -55,12 +59,17 @@ namespace DomainModels
         public MilitarStatus MilitarStatus { get; set; }
         public Role Role { get; set; }
 
-        public virtual ICollection<Subscriber> Subscribers
+        public virtual ICollection<Subscription> Subscribers
         {
             get { return _subscribers; }
             set { _subscribers = value; }
         }
 
+        public virtual ICollection<Subscription> MySubscriptions
+        {
+            get { return _mySubscriptions; }
+            set { _mySubscriptions = value; }
+        }
         public virtual ICollection<Message> OutboxMessages
         {
             get { return _outboxMessages; }
@@ -73,12 +82,17 @@ namespace DomainModels
             set { _myPosts = value; }
         }
 
-        public virtual ICollection<BlackListUser> BlackList
+        public virtual ICollection<User> MyBlackList
         {
-            get { return _blackList; }
-            set { _blackList = value; }
+            get { return _myBlackList; }
+            set { _myBlackList = value; }
         }
 
+        public virtual ICollection<User> DeniedAccessUsers
+        {
+            get { return _deniedAccessUsers; }
+            set { _deniedAccessUsers = value; }
+        }
 
         public virtual ICollection<RePost> MyRePosts
         {
