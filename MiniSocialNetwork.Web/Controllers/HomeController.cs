@@ -12,26 +12,31 @@ namespace MiniSocialNetwork.Web.Controllers
         private readonly IUserService _userService;
         private readonly IAdministrationService _adminService;
         private readonly IMessageService _messageService;
+        private readonly IPostService _postService;
 
-        public HomeController(IUserService userService, IAdministrationService adminService, IMessageService messageService)
+        public HomeController(IUserService userService, IAdministrationService adminService, IMessageService messageService,IPostService postService)
         {
             _userService = userService;
             _adminService = adminService;
             _messageService = messageService;
+            _postService = postService;
         }
 
         public ActionResult Index()
         {
-            //_userService.AddNewUser(new User() {Name = "Peter", Password = "Pass", Email = "ser@tut.by"});
-            //_userService.AddNewUser(new User() {Name = "Peter", Password = "Pass", Email = "ser2@tut.by"});
-            //_userService.AddNewUser(new User() {Name = "Peter", Password = "Pass", Email = "ser3@tut.by"});
-            //var sender = _userService.Get().First();
+            //_userService.AddNewUser(new User() { Name = "Peter Rumbler", Password = "Rumbler", Email = "Peter.Rumbler@itechart-group.by" });
+            //_userService.AddNewUser(new User() { Name = "Chisty Gullion", Password = "Gullion", Email = "Chisty.Gullion@itechart-group.by" });
+            //_userService.AddNewUser(new User() { Name = "David Wadleton", Password = "Wadleton", Email = "David.Wadleton@itechart-group.by" });
+            var poster = _userService.Get().Last();
+            _postService.AddNewPost(new Post{Content = "My first post",Title = "first post title"}, poster);
+            _postService.Repost(_postService.Get().Last(),_userService.Get().Last());
+            
             //var recipient1 = _userService.Get().ElementAt(1);
             //var recipient2 = _userService.Get().ElementAt(2);
             //var recipients = new List<User> { recipient1, recipient2 };
-            //var m = new Message {Content = "some content",Subject = "ololo"};
+            //var m = new Message { Content = "some content", Subject = "ololo" };
             //_messageService.AddNewMessage(m, sender, recipients);
-            var user = _userService.Get().First();
+            //var user = _userService.Get().First();
             return null;
         }
 

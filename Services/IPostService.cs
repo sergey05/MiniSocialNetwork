@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DomainModels;
+﻿using DomainModels;
 
 namespace Services
 {
     public interface IPostService:IServiceBase<Post>
     {
+        void AddNewPost(Post post, User user);
+        void AddPostComment(Comment comment, Post post, User commentator);
+        void Repost(Post post, User reposter);
     }
 }
