@@ -92,12 +92,24 @@ namespace Services
             }
         }
 
-        public void RemoveSubscription(Guid userId, Guid subscriberId)
+        public void RemoveMySubscription(Guid myId, Guid userId)
         {
             using (var unitOfWork = new UnitOfWork())
             {
                 var subscriptionRepository = unitOfWork.GetRepository<Subscription>();
-                var approvedSubcription = subscriptionRepository.Single(sub => sub.UserId == userId && sub.SubscriberId == subscriberId);
+                var approvedSubcription = subscriptionRepository.Single(sub => sub.UserId == userId && sub.SubscriberId == myId);
+                approvedSubcription.IsRemoved = true;
+                subscriptionRepository.Update(approvedSubcription);
+                unitOfWork.CommitChanges();
+            }
+        }
+
+        public void RemoveMySubscriber(Guid myId, Guid subscriberId)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var subscriptionRepository = unitOfWork.GetRepository<Subscription>();
+                var approvedSubcription = subscriptionRepository.Single(sub => sub.UserId == myId && sub.SubscriberId == subscriberId);
                 approvedSubcription.IsRemoved = true;
                 subscriptionRepository.Update(approvedSubcription);
                 unitOfWork.CommitChanges();
