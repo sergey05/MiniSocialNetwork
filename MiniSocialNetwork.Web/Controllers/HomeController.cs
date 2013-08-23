@@ -26,7 +26,6 @@ namespace MiniSocialNetwork.Web.Controllers
             _userService.AddNewUser(new User() {Name = "Peter", Password = "Pass", Email = "ser2@tut.by"});
             _userService.AddNewUser(new User() {Name = "Peter", Password = "Pass", Email = "ser3@tut.by"});
             var sender = _userService.Get().First();
-            //var re = _messageService.Get().First();
             var recipient1 = _userService.Get().ElementAt(1);
             var recipient2 = _userService.Get().ElementAt(2);
             var recipients = new List<User> { recipient1, recipient2 };

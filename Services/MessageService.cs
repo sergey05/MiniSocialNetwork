@@ -17,11 +17,12 @@ namespace Services
                 var messageRepository = unitOfWork.GetRepository<Message>();
                 var userRepository = unitOfWork.GetRepository<User>();
                 userRepository.Attach(sender);
-                userRepository.Attach(recipients.First());
-                userRepository.Attach(recipients.Last());
                 message.User = sender;
-                message.Recipients.Add(recipients.First());
-                message.Recipients.Add(recipients.Last());
+                foreach (var recipient in recipients)
+                {
+                    userRepository.Attach(recipient);
+                    message.Recipients.Add(recipient);
+                }
                 messageRepository.Insert(message);
                 unitOfWork.CommitChanges();
             }
