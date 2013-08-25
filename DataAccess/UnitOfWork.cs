@@ -12,7 +12,7 @@ namespace DataAccess
         private bool _disposed;
         private Hashtable _repositories;
 
-        public UnitOfWork()
+        private UnitOfWork()
         {
             _context = new DbContextFactory().Create();
         }

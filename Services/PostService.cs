@@ -42,10 +42,10 @@ namespace Services
             {
                 var userRepository = unitOfWork.GetRepository<User>();
                 var postRepository = unitOfWork.GetRepository<Post>();
-                var repostRepository = unitOfWork.GetRepository<RePost>();
+                var repostRepository = unitOfWork.GetRepository<Repost>();
                 userRepository.Attach(reposter);
                 postRepository.Attach(post);
-                var repost = new RePost {RepostTime = DateTime.Now, Owner = reposter};
+                var repost = new Repost {PostedTime = DateTime.Now, Author = reposter,OriginalPost = post};
                 repostRepository.Insert(repost);
                 unitOfWork.CommitChanges();
             }

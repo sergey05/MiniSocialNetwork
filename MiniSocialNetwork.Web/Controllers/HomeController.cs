@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using DomainModels;
 using Services;
@@ -24,9 +22,9 @@ namespace MiniSocialNetwork.Web.Controllers
 
         public ActionResult Index()
         {
-            //_userService.AddNewUser(new User() { Name = "Peter Rumbler", Password = "Rumbler", Email = "Peter.Rumbler@itechart-group.by" });
-            //_userService.AddNewUser(new User() { Name = "Chisty Gullion", Password = "Gullion", Email = "Chisty.Gullion@itechart-group.by" });
-            //_userService.AddNewUser(new User() { Name = "David Wadleton", Password = "Wadleton", Email = "David.Wadleton@itechart-group.by" });
+            _userService.AddNewUser(new User() { Name = "Peter Rumbler", Password = "Rumbler", Email = "Peter.Rumbler@itechart-group.by" });
+            _userService.AddNewUser(new User() { Name = "Chisty Gullion", Password = "Gullion", Email = "Chisty.Gullion@itechart-group.by" });
+            _userService.AddNewUser(new User() { Name = "David Wadleton", Password = "Wadleton", Email = "David.Wadleton@itechart-group.by" });
             var poster = _userService.Get().Last();
             _postService.AddNewPost(new Post{Content = "My first post",Title = "first post title"}, poster);
             _postService.Repost(_postService.Get().Last(),_userService.Get().Last());

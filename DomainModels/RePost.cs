@@ -2,9 +2,8 @@
 
 namespace DomainModels
 {
-    public class RePost:Post
+    public class Repost:Post
     {
-        public virtual User Owner { get; set; }
-        public DateTime RepostTime { get; set; }
+        public virtual Post OriginalPost { get; set; }
     }
 }

@@ -24,10 +24,24 @@ namespace EFContextLayer
                         .WithMany(u => u.Recipients)
                         .Map(m =>
                         {
-                            m.ToTable("UserMessages");
+                            m.ToTable("UserMessage");
                             m.MapLeftKey("UserId");
                             m.MapRightKey("MessageId");
                         });
+
+            modelBuilder.Entity<User>()
+                        .HasMany<Message>(u => u.OutboxMessages)
+                        .WithRequired(m => m.User).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+            .HasMany<Post>(r => r.Likes)
+            .WithMany(u => u.Likes)
+            .Map(m =>
+            {
+                m.ToTable("Likes");
+                m.MapLeftKey("UserId");
+                m.MapRightKey("PostId");
+            });
 
             modelBuilder.Entity<User>()
                         .HasMany<User>(r => r.MyBlackList)
@@ -54,15 +68,17 @@ namespace EFContextLayer
                         .HasRequired(p => p.Post)
                         .WithMany(b => b.Comments);
 
+            modelBuilder.Entity<Comment>()
+                        .HasRequired(p => p.Commentator);
+
             modelBuilder.Entity<Post>()
                         .HasRequired(p => p.Author)
-                        .WithMany(o => o.MyPosts);
+                        .WithMany(o => o.MyPosts).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<RePost>()
-                        .HasOptional(p => p.Owner)
-                        .WithMany(o => o.MyRePosts);
+            modelBuilder.Entity<Repost>()
+                        .HasRequired(p => p.OriginalPost);
 
-            modelBuilder.Entity<RePost>().ToTable("RePost");
+            modelBuilder.Entity<Repost>().ToTable("Repost");
         }
 
         public static void SetInitializer()

@@ -11,10 +11,10 @@ namespace DomainModels
         private ICollection<Message> _outboxMessages;
         private ICollection<Message> _inboxMessages;
         private ICollection<Post> _myPosts;
-        private ICollection<RePost> _myRePosts;
         private ICollection<User> _myBlackList;
         private ICollection<Subscription> _mySubscriptions;
         private ICollection<User> _deniedAccessUsers;
+        private ICollection<Post> _likes;
 
         public User()
         {
@@ -24,8 +24,8 @@ namespace DomainModels
             _myPosts = new List<Post>();
             _myBlackList = new List<User>();
             _deniedAccessUsers = new List<User>();
-            _myRePosts = new List<RePost>();
             _inboxMessages = new List<Message>();
+            _likes = new List<Post>();
             HasExpiredPassword = false;
             IsBlocked = false;
             HasAccess = true;
@@ -94,10 +94,10 @@ namespace DomainModels
             set { _deniedAccessUsers = value; }
         }
 
-        public virtual ICollection<RePost> MyRePosts
+        public virtual ICollection<Post> Likes
         {
-            get { return _myRePosts; }
-            set { _myRePosts = value; }
+            get { return _likes; }
+            set { _likes = value; }
         }
 
         public virtual ICollection<Message> InboxMessages
