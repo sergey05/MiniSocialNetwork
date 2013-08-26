@@ -35,7 +35,7 @@ namespace MiniSocialNetwork.Web.Controllers
             //var m = new Message { Content = "some content", Subject = "ololo" };
             //_messageService.AddNewMessage(m, sender, recipients);
             //var user = _userService.Get().First();
-            return null;
+            return View();
         }
 
         public string Users()
